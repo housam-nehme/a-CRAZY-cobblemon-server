@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="This is a CRAZY cobblemon server. We are keeping it relatively small kinda like HermitCraft. Come Join!">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://crazycobblesmp.com/">
+  <meta property="og:title" content="a CRAZY cobblemon server">
+  <meta property="og:description" content="Welcome to a CRAZY cobblemon server.">
+
+  <!-- Encoded space (%20) for the filename -->
+  <meta property="og:image" content="https://crazycobblesmp.com/assets/mascot%20(1).png">
+  <meta name="theme-color" content="#a058f2">
+
+  <!-- FORCES THE LARGE BANNER IN DISCORD -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://crazycobblesmp.com/assets/mascot%20(1).png">
+
+  <link rel="icon" type="image/png" href="assets/logo (1).png">
+  <title>a CRAZY cobblemon server</title>
+
+  <style>
+    @font-face {
+      font-family: 'CobblemonFont';
+      src: url('assets/MinecraftCLEAN.otf') format('opentype'); 
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: inherit;
+    }
+
+    body {
+      background-image: url('background.png');
+      background-repeat: no-repeat;
+      
+      /* Stretches the image to cover the entire screen smoothly */
+      background-size: cover;
+      
+      /* Keeps the image centered and pinned while scrolling */
+      background-position: center center;
+      background-attachment: fixed;
+      
+      background-color: #e2b007;
+      font-family: 'CobblemonFont', Verdana, sans-serif;
+      font-size: 25px;
+      color: #000000;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* FULL-WIDTH BLACK BAR */
+    .topnav {
+      background: #000000;
+      width: 100%;
+      padding: 12px 24px;
+    }
+
+    .topnav-inner {
+      max-width: 1500px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between; /* Pushes links to left/center and copyright to far right */
+      align-items: center;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .topnav a,
+    .copyright {
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: bold;
+      text-transform: uppercase;
+      text-decoration: none;
+      line-height: 1;
+    }
+
+    .topnav a:hover {
+      text-decoration: underline;
+    }
+
+    .page {
+      max-width: 1500px;
+      margin: 20px auto; 
+      
+      background-color: #0066ff; 
+      border: 3px solid #000088;  
+      border-radius: 12px;  
+      
+      padding: 25px;
+      
+      color: #ffffff;
+      min-height: 1190px;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px;
+    }
+
+    .badge img {
+      display: block;
+      width: 70px;
+      height: 70px;
+    }
+
+    .title-slot {
+      flex: 1;
+      height: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffeb3b; /* Bright yellow for visibility against blue background */
+      font-size: 45px;
+    }
+
+    .art-slot {
+      width: 90px;
+      height: 90px;
+      border: 1px dashed #cccccc;
+    }
+
+    .intro {
+      padding: 0 16px 16px;
+      line-height: 1.5;
+    }
+
+    .body {
+      display: flex;
+      gap: 30px;
+      padding: 0 16px 24px;
+    }
+
+    .sidebar {
+      width: 320px; /* Widened to fit large font without wrapping */
+      flex-shrink: 0;
+    }
+
+    .sidebar-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .dot {
+      width: 30px; /* Scaled to match large sidebar text */
+      height: 30px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .dot-features { background: #2e8b57; }
+    .dot-gallery  { background: #cc3333; }
+    .dot-rules    { background: #3366cc; }
+    .dot-connect  { background: #d9a400; }
+    .dot-discord  { background: #7a3ba0; }
+
+    .sidebar-item a {
+      color: #f1eded;
+      font-size: 23px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .sidebar-item a:hover {
+      text-decoration: underline;
+    }
+
+    .newslist {
+      flex: 1;
+    }
+
+    .news-item {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .news-thumb {
+      width: 48px;
+      height: 48px;
+      border: 1px solid #999999;
+      flex-shrink: 0;
+    }
+
+    .news-headline a {
+      color: #ffff00; /* Bright yellow for news link visibility */
+      font-weight: bold;
+      text-decoration: underline;
+    }
+    /* Carousel Container Styling */
+.carousel-container {
+  position: relative;
+  max-width: 650px;
+  height: 800px;
+  margin: 20px auto;
+  border: 4px solid #ffcc00; /* Pixel yellow border */
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #000;
+
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Image Slides */
+.carousel-slide {
+  display: none;
+}
+
+.carousel-slide.active {
+  display: block;
+}
+
+.carousel-slide img {
+  width: 100%;           /* Makes image match the container's width */
+  height: 350px;         /* Set whatever fixed height you want for the gallery box */
+  max-width: 100%;       /* Prevents image from overflowing horizontally */
+  object-fit: cover;     /* Crops image neatly to fit the box without stretching */
+  display: block;
+}
+
+/* Navigation Buttons */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #ffcc00;
+  border: 2px solid #ffcc00;
+  font-size: 20px;
+  padding: 8px 14px;
+  cursor: pointer;
+  user-select: none;
+  font-family: inherit;
+}
+
+.carousel-btn:hover {
+  background-color: #ffcc00;
+  color: #000;
+}
+
+.carousel-btn.prev { left: 10px; }
+.carousel-btn.next { right: 10px; }
+
+/* Navigation Dots */
+.carousel-dots {
+  text-align: center;
+  position: absolute;
+  bottom: 12px;
+  width: 100%;
+}
+
+  </style>
+</head>
+<body>
+  <nav class="topnav">
+  <div class="topnav-inner">
+    <div class="nav-links">
+      <!-- Added Home Button -->
+      <a href="index.html">Home</a>
+      <a href="features.html">Features</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="rules.html">Rules</a>
+      <a href="https://discord.gg/kzsx8pXvTH" target="_blank">Discord</a>
+    </div>
+    <span class="copyright">© All Rights Reserved</span>
+  </div>
+</nav>
+
+  <div class="page">
+    <header class="header">
+      <div class="badge">
+        <img src="assets/server-icon.webp" alt="server mascot">
+      </div>
+      <div class="title-slot">Gallery</div>
+      <div class="art-slot"></div>
+    </header>
+
+    <p class="intro">
+      Here is a look at the cobblemon server we all love :D
+    </p>
+    <!-- Carousel Container -->
+<div class="carousel-container">
+  <!-- Slides -->
+  <div class="carousel-slide active">
+    <img src="assets/izachfly.png" alt="Cobblemon Screenshot 1">
+  </div>
+  <div class="carousel-slide">
+    <img src="assets/gal-lounge (1).jpg" alt="Cobblemon Screenshot 2">
+  </div>
+  <div class="carousel-slide">
+    <img src="assets/gal-legendary (1).jpg" alt="Cobblemon Screenshot 3">
+  </div>
+   <div class="carousel-slide">
+    <img src="assets/meow.png" alt="Cobblemon Screenshot 23">
+  </div>
+   <div class="carousel-slide">
+    <img src="assets/gal-wooper (1).jpg" alt="Cobblemon Screenshot 3">
+  </div>
+   <div class="carousel-slide">
+    <img src="assets/shiny duck.png" alt="Cobblemon Screenshot 3">
+  </div>
+   <div class="carousel-slide">
+    <img src="assets/reshiram.png" alt="Cobblemon Screenshot 3">
+  </div>
+   <div class="carousel-slide">
+    <img src="assets/izach look at pokemon.png" alt="Cobblemon Screenshot 3">
+  </div>
+   <div class="carousel-slide">
+    <img src="assets/aura clash.png" alt="Cobblemon Screenshot 3">
+  </div>
+   <div class="carousel-slide">
+    <img src="assets/armarouge.png" alt="Cobblemon Screenshot 3">
+  </div>
+   <div class="carousel-slide">
+    <img src="assets/gal-hq (1).jpg" alt="Cobblemon Screenshot 3">
+  </div>
+   <div class="carousel-slide">
+    <img src="assets/gal-supply (1).jpg" alt="Cobblemon Screenshot 3">
+  </div>
+   <div class="carousel-slide">
+    <img src="assets/END.png" alt="Cobblemon Screenshot 3">
+  </div>
+   <div class="carousel-slide">
+    <img src="assets/japan.png" alt="Cobblemon Screenshot 3">
+  </div>
+   <div class="carousel-slide">
+    <img src="assets/pond.png" alt="Cobblemon Screenshot 3">
+  </div>
+   <div class="carousel-slide">
+    <img src="assets/garchomp.png" alt="Cobblemon Screenshot 3">
+  </div>
+   <div class="carousel-slide">
+    <img src="assets/castle.png" alt="Cobblemon Screenshot 3">
+  </div>
+
+  <!-- Navigation Arrows -->
+  <button class="carousel-btn prev" onclick="moveSlide(-1)">&#10094;</button>
+  <button class="carousel-btn next" onclick="moveSlide(1)">&#10095;</button>
+</div>
+
+  <!-- Navigation Arrows -->
+  <button class="carousel-btn prev" onclick="moveSlide(-1)">&#10094;</button>
+  <button class="carousel-btn next" onclick="moveSlide(1)">&#10095;</button>
+
+  <!-- Dots Indicator -->
+  <div class="carousel-dots">
+    <span class="dot active" onclick="currentSlide(0)"></span>
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+  </div>
+</div>
+
+    
+
+    
+      </section>
+
+    </div>
+
+  </div>
+  <script>
+  let slideIndex = 0;
+
+  function showSlide(index) {
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dots = document.querySelectorAll('.dot');
+
+    if (index >= slides.length) slideIndex = 0;
+    if (index < 0) slideIndex = slides.length - 1;
+
+    slides.forEach(slide => slide.classList.remove('active'));
+    dots.forEach(dot => dot.classList.remove('active'));
+
+    slides[slideIndex].classList.add('active');
+    dots[slideIndex].classList.add('active');
+  }
+
+  function moveSlide(step) {
+    showSlide(slideIndex += step);
+  }
+
+  function currentSlide(index) {
+    showSlide(slideIndex = index);
+  }
+</script>
+</body>
+</html>
