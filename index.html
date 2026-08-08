@@ -9,7 +9,6 @@
   <meta property="og:title" content="a CRAZY cobblemon server">
   <meta property="og:description" content="Welcome to a CRAZY cobblemon server.">
 
-  <!-- Encoded space (%20) for the filename -->
   <meta property="og:image" content="https://crazycobblesmp.com/assets/mascot%20(1).png">
   <meta name="theme-color" content="#a058f2">
 
@@ -43,10 +42,8 @@
       background-image: url('background.png');
       background-repeat: no-repeat;
       
-      /* Stretches the image to cover the entire screen smoothly */
       background-size: cover;
       
-      /* Keeps the image centered and pinned while scrolling */
       background-position: center center;
       background-attachment: fixed;
       
@@ -58,7 +55,6 @@
       padding: 0;
     }
 
-    /* FULL-WIDTH BLACK BAR */
     .topnav {
       background: #000000;
       width: 100%;
@@ -69,7 +65,7 @@
       max-width: 1500px;
       margin: 0 auto;
       display: flex;
-      justify-content: space-between; /* Pushes links to left/center and copyright to far right */
+      justify-content: space-between; 
       align-items: center;
     }
 
@@ -93,7 +89,7 @@
     }
 
     .page {
-      max-width: 1500px;
+      max-width: 1250px;
       margin: 20px auto; 
       
       background-color: #0066ff; 
@@ -103,7 +99,7 @@
       padding: 25px;
       
       color: #ffffff;
-      min-height: 1190px;
+      min-height: 1300px;
     }
 
     .header {
@@ -125,7 +121,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #ffeb3b; /* Bright yellow for visibility against blue background */
+      color: #ffeb3b; 
       font-size: 45px;
     }
 
@@ -148,7 +144,7 @@
     }
 
     .sidebar {
-      width: 320px; /* Widened to fit large font without wrapping */
+      width: 320px; 
       flex-shrink: 0;
     }
 
@@ -160,7 +156,7 @@
     }
 
     .dot {
-      width: 30px; /* Scaled to match large sidebar text */
+      width: 30px; 
       height: 30px;
       border-radius: 50%;
       flex-shrink: 0;
@@ -190,31 +186,26 @@
   gap: 16px;
 }
 
-/* INDIVIDUAL NEWS BOX (3D Beveled Panel Look) */
 .news-item {
   display: flex;
   gap: 16px;
   align-items: flex-start;
   padding: 12px;
   
-  /* Classic retro 3D raised border effect */
-  background-color: #0055dd; /* Darker blue panel background */
-  border: 3px outset #4d90ff; /* Light top/left, dark bottom/right */
+  background-color: #0055dd; 
+  border: 3px outset #4d90ff; 
   border-radius: 4px;
 }
 
-/* RETRO THUMBNAIL FRAME */
 .news-thumb {
   width: 300px;
   height: 150px;
   object-fit: cover;
   flex-shrink: 0;
   
-  /* Inset frame effect (looks recessed into the box) */
   border: 3px inset #002b80;
   background-color: #000000;
   
-  /* Keeps pixel art sharp on high-res screens */
   image-rendering: pixelated;
   image-rendering: crisp-edges;
 }
@@ -223,27 +214,24 @@
   flex: 1;
 }
 
-/* RETRO NEWS HEADLINE LINK */
 .news-headline {
   margin-bottom: 6px;
 }
 
 .news-headline a {
-  color: #ffff00; /* Bright yellow retro text */
+  color: #ffff00; 
   font-weight: bold;
   font-size: 20px;
   text-decoration: underline;
-  text-shadow: 1px 1px 0px #000000; /* Subtle pixel drop shadow */
+  text-shadow: 1px 1px 0px #000000; 
 }
 
-/* Classic retro link hover: red background highlight or color flip */
 .news-headline a:hover {
   color: #ffffff;
-  background-color: #cc0000; /* Red box highlight behind link text */
+  background-color: #cc0000; 
   text-decoration: none;
 }
 
-/* NEWS DESCRIPTION TEXT */
 .news-description {
   color: #ffffff;
   font-size: 15px;
