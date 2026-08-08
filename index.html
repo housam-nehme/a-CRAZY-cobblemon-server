@@ -175,29 +175,74 @@
     .sidebar-item a:hover {
       text-decoration: underline;
     }
+/* NEWS SECTION CONTAINER */
+.newslist {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
 
-    .newslist {
-      flex: 1;
-    }
+/* INDIVIDUAL NEWS BOX (3D Beveled Panel Look) */
+.news-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 12px;
+  
+  /* Classic retro 3D raised border effect */
+  background-color: #0055dd; /* Darker blue panel background */
+  border: 3px outset #4d90ff; /* Light top/left, dark bottom/right */
+  border-radius: 4px;
+}
 
-    .news-item {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 16px;
-    }
+/* RETRO THUMBNAIL FRAME */
+.news-thumb {
+  width: 300px;
+  height: 150px;
+  object-fit: cover;
+  flex-shrink: 0;
+  
+  /* Inset frame effect (looks recessed into the box) */
+  border: 3px inset #002b80;
+  background-color: #000000;
+  
+  /* Keeps pixel art sharp on high-res screens */
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
 
-    .news-thumb {
-      width: 48px;
-      height: 48px;
-      border: 1px solid #999999;
-      flex-shrink: 0;
-    }
+.news-content {
+  flex: 1;
+}
 
-    .news-headline a {
-      color: #ffff00; /* Bright yellow for news link visibility */
-      font-weight: bold;
-      text-decoration: underline;
-    }
+/* RETRO NEWS HEADLINE LINK */
+.news-headline {
+  margin-bottom: 6px;
+}
+
+.news-headline a {
+  color: #ffff00; /* Bright yellow retro text */
+  font-weight: bold;
+  font-size: 20px;
+  text-decoration: underline;
+  text-shadow: 1px 1px 0px #000000; /* Subtle pixel drop shadow */
+}
+
+/* Classic retro link hover: red background highlight or color flip */
+.news-headline a:hover {
+  color: #ffffff;
+  background-color: #cc0000; /* Red box highlight behind link text */
+  text-decoration: none;
+}
+
+/* NEWS DESCRIPTION TEXT */
+.news-description {
+  color: #ffffff;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
   </style>
 </head>
 <body>
@@ -251,16 +296,26 @@
         </div>
       </aside>
 
-      <section class="newslist">
-        <div class="news-item">
-          <div class="news-thumb"></div>
-          <div class="news-headline"><a href="#">yada yadyadyadyayda</a></div>
-        </div>
-        <div class="news-item">
-          <div class="news-thumb"></div>
-          <div class="news-headline"><a href="#">saydasfyaysfyayf</a></div>
-        </div>
-      </section>
+<section class="newslist">
+  <div class="news-item">
+    <!-- REPLACED EMPTY DIV WITH IMG TAG -->
+    <img src="assets/townhall.png" alt="Crazy Cobblemon Server" class="news-thumb"> 
+    <div class="news-content">
+      <div class="news-headline">
+        <a href="https://discord.gg/R6EMQjE9UU" target="_blank">Welcome to the CRAZY cobblemon server. Join now, Claim your land!</a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="news-item">
+    <img src="assets/treeboy.png" alt="Battles Soon" class="news-thumb coin-icon"> 
+    <div class="news-content">
+      <div class="news-headline">
+        <a href="tournament.html">Tournament coming soon...</a>
+      </div>
+    </div>
+  </div>
+</section>
 
     </div>
 
