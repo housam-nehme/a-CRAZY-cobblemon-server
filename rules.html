@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="This is a CRAZY cobblemon server. We are keeping it relatively small kinda like HermitCraft. Come Join!">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://crazycobblesmp.com/">
+  <meta property="og:title" content="a CRAZY cobblemon server">
+  <meta property="og:description" content="Welcome to a CRAZY cobblemon server.">
+
+  <!-- Encoded space (%20) for the filename -->
+  <meta property="og:image" content="https://crazycobblesmp.com/assets/mascot%20(1).png">
+  <meta name="theme-color" content="#a058f2">
+
+  <!-- FORCES THE LARGE BANNER IN DISCORD -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://crazycobblesmp.com/assets/mascot%20(1).png">
+
+  <link rel="icon" type="image/png" href="assets/logo (1).png">
+  <title>a CRAZY cobblemon server</title>
+
+  <style>
+    @font-face {
+      font-family: 'CobblemonFont';
+      src: url('assets/MinecraftCLEAN.otf') format('opentype'); 
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: inherit;
+    }
+
+    body {
+      background-image: url('background.png');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center center;
+      background-attachment: fixed;
+      background-color: #e2b007;
+      font-family: 'CobblemonFont', Verdana, sans-serif;
+      font-size: 25px;
+      color: #000000;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* FULL-WIDTH BLACK BAR */
+    .topnav {
+      background: #000000;
+      width: 100%;
+      padding: 12px 24px;
+    }
+
+    .topnav-inner {
+      max-width: 1500px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .topnav a,
+    .copyright {
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: bold;
+      text-transform: uppercase;
+      text-decoration: none;
+      line-height: 1;
+    }
+
+    .topnav a:hover {
+      text-decoration: underline;
+    }
+
+    .page {
+      position: relative;
+      max-width: 1250px;
+      margin: 20px auto; 
+      background-color: #0066ff; 
+      border: 3px solid #000088;  
+      border-radius: 12px;  
+      padding: 25px;
+      color: #ffffff;
+      /* Removed fixed min-height so the blue container automatically stretches to fit long text */
+      height: auto; 
+
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px;
+    }
+
+    .badge img {
+      display: block;
+      width: 70px;
+      height: 70px;
+    }
+
+    .title-slot {
+      flex: 1;
+      height: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffeb3b;
+      font-size: 45px;
+    }
+
+    .art-slot {
+      width: 90px;
+      height: 90px;
+    }
+
+    /* Positioning for the floating Arceus GIF */
+    .arceus-gif {
+  position: absolute;
+  left: -450px; /* Moves him left of the blue box */
+  top: 290px;         
+  transform: scaleX(-1); 
+  display: block;
+  z-index: 10;
+}
+
+    /* TWO COLUMN RULES LAYOUT */
+    .rules-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      padding: 20px;
+      color: #ffffff;
+    }
+
+    .rules-column h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+      text-align: center;
+      color: #ffffff;
+    }
+
+    .rules-list {
+      list-style-type: decimal;
+      padding-left: 20px;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    .rules-list > li {
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    .sub-rules {
+      list-style-type: disc;
+      padding-left: 20px;
+      margin-top: 8px;
+      font-weight: normal;
+    }
+
+    .sub-rules li {
+      margin-bottom: 6px;
+    }
+  </style>
+</head>
+<body>
+  <nav class="topnav">
+    <div class="topnav-inner">
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="features.html">Features</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="rules.html">Rules</a>
+        <a href="https://discord.llomeli.com" target="_blank">Discord</a>
+      </div>
+      <span class="copyright">© All Rights Reserved</span>
+    </div>
+  </nav>
+
+  <div class="page">
+    <!-- Arceus Image -->
+    <img src="assets/ARCEUSGIFRULES.gif" alt="arceus" class="arceus-gif">
+
+    <header class="header">
+      <div class="badge">
+        <img src="assets/server-icon.webp" alt="server mascot">
+      </div>
+      <div class="title-slot">Rules</div>
+      <div class="art-slot">
+        <img src="assets/zygarde.gif" alt="zygarde" style="width: 140%; height: 140%; object-fit: contain; display: block;">
+      </div>
+    </header>
+<div class="rules-grid">
+
+  <!-- Discord Column -->
+  <div class="rules-column">
+    <h2>Discord Rules</h2>
+    <ol class="rules-list">
+
+      <li>Be Respectful
+        <ul class="sub-rules">
+          <li>Respect everyone and do not be toxic. Any intentional harassment, racism, sexism, homophobia, or transphobia will result in a mute or ban.</li>
+          <li>Absolutely NO slurs or signs of hate speech, regardless of arguments or disagreements. You will be kicked or banned immediately.</li>
+        </ul>
+      </li>
+
+      <li>Swearing / Edgy humor
+        <ul class="sub-rules">
+          <li>swearing is fine, everyone here is old enough to take big boy words, but know your limits, and don't be rude or disrespectful.</li>
+          <li>edgy humor is generally okay, but read the room, if it becomes annoying, malicious, or makes people feel uncomfortable, you will most be muted or kicked.</li>
+        </ul>
+      </li>
+
+    </ol>
+  </div>
+
+  <!-- Minecraft Column -->
+  <div class="rules-column">
+    <h2>Minecraft Rules</h2>
+    <p class="rules-intro">
+      Our world is full of creative and talented trainers. These are the rules for our Minecraft server in order to keep it that way.
+    </p>
+
+    <ol class="rules-list">
+
+      <li>No Griefing
+        <ul class="sub-rules">
+          <li>We do not allow any sort of destruction of another player's land, farm, or any type of building.</li>
+          <li>This includes killing other players' pets or farm animals (without permission).</li>
+          <li>Please be mindful of any pranks or trolls you may do to other players.</li>
+        </ul>
+      </li>
+
+      <li>No Stealing
+        <ul class="sub-rules">
+          <li>Stealing from other players' chests or farms is not allowed.</li>
+          <li>Please ask before taking; there should be no reason to cause issues regarding items.</li>
+          <li>Villagers that belong to someone are THEIRS—you must get permission from them before using them.</li>
+        </ul>
+      </li>
+
+      <li>PvP Rules
+        <ul class="sub-rules">
+          <li>PvP is enabled, but do not kill other players randomly.</li>
+          <li>Randomly killing players will result in a blacklist.</li>
+        </ul>
+      </li>
+
+      <li>Land Claim Information
+        <ul class="sub-rules">
+          <li>Please respect all land claims.</li>
+          <li>To keep exploration fresh, keep any important bases or farms within the 8k by 8k border.</li>
+          <li>Check the <a href="https://map.llomeli.com"  target="_blank" class="highlight-link">BlueMap</a> or ask staff which areas have been claimed.</li>
+          <li>Find an open area that is not circled or claimed by anyone else.</li>
+          <li>Please ask before building in someone else's claimed or built-in area.</li>
+        </ul>
+      </li>
+
+      <li>Always Work for What You Need
+        <ul class="sub-rules">
+          <li>People will gladly help you out, but don't let it become free handouts. Earn your gear, blocks, and resources yourself.</li>
+          <li>Getting free stuff kills the fun, and you'll lose motivation to keep playing much faster.</li>
+          <li>Set a goal, work toward it, and build up from there!</li>
+        </ul>
+      </li>
+
+    </ol>
+  </div>
+
+</div>
+
+    </div>
+  </div>
+</body>
+</html>
