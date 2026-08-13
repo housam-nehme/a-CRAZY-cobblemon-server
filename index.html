@@ -37,16 +37,12 @@
       height: auto;
     }
 
-
     body {
       background-image: url('background.png');
       background-repeat: no-repeat;
-      
       background-size: cover;
-      
       background-position: center center;
       background-attachment: fixed;
-      
       background-color: #e2b007;
       font-family: 'CobblemonFont', Verdana, sans-serif;
       font-size: 25px;
@@ -55,6 +51,7 @@
       padding: 0;
     }
 
+    /* TOP NAV & RESPONSIVE NAV FIXES */
     .topnav {
       background: #000000;
       width: 100%;
@@ -62,16 +59,19 @@
     }
 
     .topnav-inner {
-      max-width: 1500px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between; 
-      align-items: center;
-    }
+    max-width: 1500px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    flex-wrap: wrap; /* ADD THIS: allows items to stack/wrap on small screens */
+    gap: 10px;       /* ADD THIS: adds clean spacing when wrapped */
+  }
 
     .nav-links {
       display: flex;
       gap: 20px;
+      flex-wrap: wrap;
     }
 
     .topnav a,
@@ -88,20 +88,23 @@
       text-decoration: underline;
     }
 
+    /* MAIN PAGE CONTAINER */
     .page {
-      max-width: 1250px;
-      margin: 20px auto; 
-      
-      background-color: #0066ff; 
-      border: 3px solid #000088;  
-      border-radius: 12px;  
-      
-      padding: 25px;
-      
-      color: #ffffff;
-      min-height: 1300px;
-    }
+    max-width: 1250px;
+    width: calc(100% - 20px); /* keeps 10px margins on left/right of phone screen */
+    margin: 20px auto; 
+    
+    background-color: #0066ff; 
+    border: 3px solid #000088;  
+    border-radius: 12px;  
+    
+    padding: 15px;            /* from 25px to 15px for mobile breathing room */
+    
+    color: #ffffff;
+    min-height: 1300px;
+}
 
+    /* HEADER FIXES */
     .header {
       display: flex;
       align-items: center;
@@ -117,19 +120,22 @@
 
     .title-slot {
       flex: 1;
-      height: 90px;
+      min-width: 0; /* FIX 1: Allows title flexbox to shrink on mobile */
+      height: auto;
+      min-height: 90px;
       display: flex;
       align-items: center;
       justify-content: center;
       color: #ffeb3b; 
       font-size: 45px;
+      text-align: center;
+      word-break: break-word; /* Prevents title from pushing screen wide */
     }
 
     .art-slot {
-
       width: 90px;
       height: 90px;
-    
+      flex-shrink: 0;
     }
 
     .intro {
@@ -178,141 +184,203 @@
     .sidebar-item a:hover {
       text-decoration: underline;
     }
-/* NEWS SECTION CONTAINER */
-.newslist {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
 
-.news-item {
-  display: flex;
-  gap: 16px;
-  align-items: flex-start;
-  padding: 12px;
-  
-  background-color: #0055dd; 
-  border: 3px outset #4d90ff; 
-  border-radius: 4px;
-}
+    /* NEWS SECTION CONTAINER FIXES */
+    .newslist {
+      flex: 1;
+      min-width: 0; /* FIX 2: Prevents news container from forcing horizontal scroll */
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
 
-.news-thumb {
-  width: 300px;
-  height: 150px;
-  object-fit: cover;
-  flex-shrink: 0;
-  
-  border: 3px inset #002b80;
-  background-color: #000000;
-  
-  image-rendering: pixelated;
-  image-rendering: crisp-edges;
-}
+    .news-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 12px;
+      background-color: #0055dd; 
+      border: 3px outset #4d90ff; 
+      border-radius: 4px;
+      min-width: 0;
+    }
 
-.news-content {
-  flex: 1;
-}
+    .news-thumb {
+      width: 300px;
+      max-width: 100%; /* FIX 3: Makes fixed 300px thumbnail scale down on mobile */
+      height: auto;
+      aspect-ratio: 2 / 1;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 3px inset #002b80;
+      background-color: #000000;
+      image-rendering: pixelated;
+      image-rendering: crisp-edges;
+    }
 
-.news-headline {
-  margin-bottom: 6px;
-}
+    .news-content {
+      flex: 1;
+      min-width: 0; /* FIX 4: Allows text container to shrink below content width */
+    }
 
-.news-headline a {
-  color: #ffff00; 
-  font-weight: bold;
-  font-size: 20px;
-  text-decoration: underline;
-  text-shadow: 1px 1px 0px #000000; 
-}
+    .news-headline {
+      margin-bottom: 6px;
+    }
 
-.news-headline a:hover {
-  color: #ffffff;
-  background-color: #cc0000; 
-  text-decoration: none;
-}
+    .news-headline a {
+      color: #ffff00; 
+      font-weight: bold;
+      font-size: 20px;
+      text-decoration: underline;
+      text-shadow: 1px 1px 0px #000000; 
+      word-break: break-word; /* Prevents continuous link text from breaking bounds */
+    }
 
-.news-description {
-  color: #ffffff;
-  font-size: 15px;
-  line-height: 1.4;
-}
+    .news-headline a:hover {
+      color: #ffffff;
+      background-color: #cc0000; 
+      text-decoration: none;
+    }
 
-/* TIKTOK STYLE VIDEO SECTION */
-.video-section {
-  margin-top: 24px;
-  display: flex;
-  justify-content: space-between;
-  align-items: stretch;
-  gap: 20px;
-}
+    .news-description {
+      color: #ffffff;
+      font-size: 15px;
+      line-height: 1.4;
+    }
 
-.tiktok-card {
-  width: 300px; /* Adjust width as needed */
-  background-color: #0055dd;
-  border: 3px outset #4d90ff;
-  border-radius: 8px;
-  padding: 12px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+    /* TIKTOK STYLE VIDEO SECTION */
+    .video-section {
+      margin-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: stretch;
+      gap: 20px;
+    }
 
-.tiktok-video-wrapper {
-  width: 100%;
-  aspect-ratio: 9 / 16; /* Forces TikTok portrait aspect ratio */
-  background-color: #000000;
-  border: 3px inset #002b80;
-  border-radius: 4px;
-  overflow: hidden;
-}
+    .tiktok-card {
+      width: 300px;
+      max-width: 100%;
+      background-color: #0055dd;
+      border: 3px outset #4d90ff;
+      border-radius: 8px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-.tiktok-video-wrapper video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-video:fullscreen {
-  object-fit: contain;
-  background-color: #000;
-}
-video:-webkit-full-screen {
-  object-fit: contain;
-  background-color: #000;
-}
-video:-moz-full-screen {
-  object-fit: contain;
-  background-color: #000;
-}
-.tour-card {
-  flex: 1;
-  background-color: #0055dd;
-  border: 3px outset #4d90ff;
-  border-radius: 8px;
-  padding: 12px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+    .tiktok-video-wrapper {
+      width: 100%;
+      aspect-ratio: 9 / 16;
+      background-color: #000000;
+      border: 3px inset #002b80;
+      border-radius: 4px;
+      overflow: hidden;
+    }
 
-.tour-video-wrapper {
-  width: 100%;
-  flex: 1;
-  background-color: #000000;
-  border: 3px inset #002b80;
-  border-radius: 4px;
-  overflow: hidden;
-}
+    .tiktok-video-wrapper video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
 
-.tour-video-wrapper video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
+    video:fullscreen {
+      object-fit: contain;
+      background-color: #000;
+    }
 
-  </style>
+    video:-webkit-full-screen {
+      object-fit: contain;
+      background-color: #000;
+    }
+
+    video:-moz-full-screen {
+      object-fit: contain;
+      background-color: #000;
+    }
+
+    .tour-card {
+      flex: 1;
+      min-width: 0;
+      background-color: #0055dd;
+      border: 3px outset #4d90ff;
+      border-radius: 8px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .tour-video-wrapper {
+      width: 100%;
+      flex: 1;
+      background-color: #000000;
+      border: 3px inset #002b80;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .tour-video-wrapper video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ==========================================================================
+       MOBILE BREAKPOINT RULES (Triggers on phone screens <= 768px wide)
+       ========================================================================== */
+    @media (max-width: 768px) {
+      .topnav-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .nav-links {
+        justify-content: center;
+      }
+
+      .page {
+        padding: 12px;
+        min-height: auto;
+      }
+
+      .header {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .title-slot {
+        font-size: 28px;
+      }
+
+      .body {
+        flex-direction: column;
+        padding: 0 0 16px;
+      }
+
+      .sidebar {
+        width: 100%;
+      }
+
+      .news-item {
+        flex-direction: column;
+      }
+
+      .news-thumb {
+        width: 100%;
+      }
+
+      .video-section {
+        flex-direction: column;
+      }
+
+      .tiktok-card {
+        width: 100%;
+      }
+    }
+</style>
 </head>
 <body>
   <nav class="topnav">

@@ -36,14 +36,9 @@
     body {
       background-image: url('background.png');
       background-repeat: no-repeat;
-      
-      /* Stretches the image to cover the entire screen smoothly */
       background-size: cover;
-      
-      /* Keeps the image centered and pinned while scrolling */
       background-position: center center;
       background-attachment: fixed;
-      
       background-color: #e2b007;
       font-family: 'CobblemonFont', Verdana, sans-serif;
       font-size: 25px;
@@ -63,13 +58,16 @@
       max-width: 1500px;
       margin: 0 auto;
       display: flex;
-      justify-content: space-between; /* Pushes links to left/center and copyright to far right */
+      justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
     }
 
     .nav-links {
       display: flex;
       gap: 20px;
+      flex-wrap: wrap;
     }
 
     .topnav a,
@@ -88,16 +86,15 @@
 
     .page {
       max-width: 1250px;
+      width: calc(100% - 20px);
       margin: 20px auto; 
-      
       background-color: #0066ff; 
       border: 3px solid #000088;  
       border-radius: 12px;  
-      
       padding: 25px;
-      
       color: #ffffff;
-      min-height: 1190px;
+      height: auto;
+      min-height: 300px;
     }
 
     .header {
@@ -115,17 +112,22 @@
 
     .title-slot {
       flex: 1;
-      height: 90px;
+      min-width: 0;
+      height: auto;
+      min-height: 90px;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #ffeb3b; /* Bright yellow for visibility against blue background */
+      color: #ffeb3b; 
       font-size: 45px;
+      text-align: center;
+      word-break: break-word;
     }
 
     .art-slot {
       width: 90px;
       height: 90px;
+      flex-shrink: 0;
     }
 
     .intro {
@@ -140,7 +142,7 @@
     }
 
     .sidebar {
-      width: 320px; /* Widened to fit large font without wrapping */
+      width: 320px;
       flex-shrink: 0;
     }
 
@@ -152,7 +154,7 @@
     }
 
     .dot {
-      width: 30px; /* Scaled to match large sidebar text */
+      width: 30px;
       height: 30px;
       border-radius: 50%;
       flex-shrink: 0;
@@ -177,12 +179,14 @@
 
     .newslist {
       flex: 1;
+      min-width: 0;
     }
 
     .news-item {
       display: flex;
       gap: 10px;
       margin-bottom: 16px;
+      min-width: 0;
     }
 
     .news-thumb {
@@ -193,26 +197,75 @@
     }
 
     .news-headline a {
-      color: #ffff00; /* Bright yellow for news link visibility */
+      color: #ffff00;
       font-weight: bold;
       text-decoration: underline;
+      word-break: break-word;
+    }
+
+    /* MOBILE / PHONE OVERRIDES */
+    @media (max-width: 768px) {
+      .topnav {
+        padding: 10px 12px;
+      }
+
+      .topnav-inner {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+      }
+
+      .nav-links {
+        justify-content: center;
+        gap: 10px 14px;
+      }
+
+      .topnav a, 
+      .copyright {
+        font-size: 13px;
+      }
+
+      .page {
+        padding: 15px;
+      }
+
+      .header {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .title-slot {
+        font-size: 32px;
+      }
+
+      .art-slot img {
+        margin-top: -10px;
+      }
+
+      .body {
+        flex-direction: column;
+        padding: 0 0 16px;
+      }
+
+      .sidebar {
+        width: 100%;
+      }
     }
   </style>
 </head>
 <body>
   <nav class="topnav">
-  <div class="topnav-inner">
-    <div class="nav-links">
-      <!-- Added Home Button -->
-      <a href="index.html">Home</a>
-      <a href="features.html">Features</a>
-      <a href="gallery.html">Gallery</a>
-      <a href="rules.html">Rules</a>
-      <a href="https://discord.llomeli.com" target="_blank">Discord</a>
+    <div class="topnav-inner">
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="features.html">Features</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="rules.html">Rules</a>
+        <a href="https://discord.llomeli.com" target="_blank">Discord</a>
+      </div>
+      <span class="copyright">© All Rights Reserved</span>
     </div>
-    <span class="copyright">© All Rights Reserved</span>
-  </div>
-</nav>
+  </nav>
 
   <div class="page">
     <header class="header">
@@ -221,23 +274,17 @@
       </div>
       <div class="title-slot">Mod Features</div>
       <div class="art-slot">
-         <img src="assets/mewgif.gif" alt="garchomp" style="width: 120%; height: 120%; object-fit: contain; display: block;">
+        <img src="assets/mewgif.gif" alt="mew" style="width: 120%; height: 120%; object-fit: contain; display: block;">
       </div>
     </header>
 
     <p class="intro">
-     Our modpack includes various quality of life mods such as <span style="color: rgb(255, 206, 45);">Just Enough Items and Gravestones </span>. It also includes <span style="color: rgb(255, 206, 45);">Cobblemon: Mega Showdown, WardenTools, Biomes O' Plenty, and more. </span>
+      Our modpack includes various quality of life mods such as <span style="color: rgb(255, 206, 45);">Just Enough Items and Gravestones</span>. It also includes <span style="color: rgb(255, 206, 45);">Cobblemon: Mega Showdown, WardenTools, Biomes O' Plenty, and more.</span>
     </p>
 
     <div class="body">
-
-      </aside>
-
-        </div>
-      </section>
-
+      <!-- You can add feature lists or sidebars here in the future -->
     </div>
-
   </div>
 </body>
 </html>
