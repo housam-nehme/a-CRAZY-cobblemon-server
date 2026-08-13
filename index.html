@@ -242,7 +242,9 @@
 .video-section {
   margin-top: 24px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 20px;
 }
 
 .tiktok-card {
@@ -283,6 +285,33 @@ video:-moz-full-screen {
   object-fit: contain;
   background-color: #000;
 }
+.tour-card {
+  flex: 1;
+  background-color: #0055dd;
+  border: 3px outset #4d90ff;
+  border-radius: 8px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tour-video-wrapper {
+  width: 100%;
+  flex: 1;
+  background-color: #000000;
+  border: 3px inset #002b80;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.tour-video-wrapper video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
   </style>
 </head>
 <body>
@@ -338,47 +367,47 @@ video:-moz-full-screen {
         </div>
       </aside>
 
-<section class="newslist">
-  <section class="newslist">
-  <div class="news-item">
-    <!-- REPLACED EMPTY DIV WITH IMG TAG -->
-    <img src="assets/townhall.png" alt="Crazy Cobblemon Server" class="news-thumb"> 
-    <div class="news-content">
-      <div class="news-headline">
-        <a href="https://discord.llomeli.com" target="_blank">Welcome to the CRAZY cobblemon server. Join now, Claim your land!</a>
-      </div>
-    </div>
-  </div>
-  
-  <div class="news-item">
-    <img src="assets/treeboy.png" alt="Battles Soon" class="news-thumb coin-icon"> 
-    <div class="news-content">
-      <div class="news-headline">
-        <a href="tournament.html">Tournament coming soon...</a>
-      </div>
-    </div>
-  </div>
+      <section class="newslist">
+        <div class="news-item">
+          <img src="assets/townhall.png" alt="Crazy Cobblemon Server" class="news-thumb">
+          <div class="news-content">
+            <div class="news-headline">
+              <a href="https://discord.llomeli.com" target="_blank">Welcome to the CRAZY cobblemon server. Join now, Claim your land!</a>
+            </div>
+          </div>
+        </div>
 
-  <!-- TIKTOK VIDEO CONTAINER -->
-  <div class="video-section">
-    <div class="tiktok-card">
-      <div class="tiktok-video-wrapper">
-        <video controls autoplay loop muted playsinline>
-          <source src="assets/crazycobblesmp.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
-    </div>
-  </div>
-</section>
-  
-  
-      <div class="news-headline">
-      </div>
-    </div>
-  </div>
-</section>
+        <div class="news-item">
+          <img src="assets/treeboy.png" alt="Battles Soon" class="news-thumb coin-icon">
+          <div class="news-content">
+            <div class="news-headline">
+              <a href="tournament.html">Tournament coming soon...</a>
+            </div>
+          </div>
+        </div>
+      </section>
 
+    </div>
+
+    <!-- VIDEO SECTION: full page width, sibling of .body -->
+    <div class="video-section">
+      <div class="tour-card">
+        <div class="tour-video-wrapper">
+          <video controls>
+            <source src="assets/servertoursoon.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+
+      <div class="tiktok-card">
+        <div class="tiktok-video-wrapper">
+          <video controls autoplay loop muted playsinline>
+            <source src="assets/crazycobblesmp.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
     </div>
 
   </div>
