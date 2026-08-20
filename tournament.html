@@ -33,17 +33,17 @@
       font-family: inherit;
     }
 
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
     body {
       background-image: url('background.png');
       background-repeat: no-repeat;
-      
-      /* Stretches the image to cover the entire screen smoothly */
       background-size: cover;
-      
-      /* Keeps the image centered and pinned while scrolling */
       background-position: center center;
       background-attachment: fixed;
-      
       background-color: #e2b007;
       font-family: 'CobblemonFont', Verdana, sans-serif;
       font-size: 25px;
@@ -52,7 +52,7 @@
       padding: 0;
     }
 
-    /* FULL-WIDTH BLACK BAR */
+    /* TOP NAV & RESPONSIVE NAV FIXES */
     .topnav {
       background: #000000;
       width: 100%;
@@ -63,13 +63,16 @@
       max-width: 1500px;
       margin: 0 auto;
       display: flex;
-      justify-content: space-between; /* Pushes links to left/center and copyright to far right */
+      justify-content: space-between; 
       align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
     }
 
     .nav-links {
       display: flex;
       gap: 20px;
+      flex-wrap: wrap;
     }
 
     .topnav a,
@@ -86,20 +89,20 @@
       text-decoration: underline;
     }
 
+    /* MAIN PAGE CONTAINER */
     .page {
       max-width: 1250px;
+      width: calc(100% - 20px);
       margin: 20px auto; 
-      
       background-color: #0066ff; 
       border: 3px solid #000088;  
       border-radius: 12px;  
-      
-      padding: 25px;
-      
+      padding: 15px;
       color: #ffffff;
       min-height: 1190px;
     }
 
+    /* HEADER FIXES */
     .header {
       display: flex;
       align-items: center;
@@ -115,17 +118,25 @@
 
     .title-slot {
       flex: 1;
-      height: 90px;
+      min-width: 0;
+      height: auto;
+      min-height: 90px;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #ffeb3b; /* Bright yellow for visibility against blue background */
+      color: #ffeb3b;
       font-size: 45px;
+      text-align: center;
+      word-break: break-word;
     }
 
     .art-slot {
       width: 90px;
       height: 90px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .intro {
@@ -140,7 +151,7 @@
     }
 
     .sidebar {
-      width: 320px; /* Widened to fit large font without wrapping */
+      width: 320px; 
       flex-shrink: 0;
     }
 
@@ -152,7 +163,7 @@
     }
 
     .dot {
-      width: 30px; /* Scaled to match large sidebar text */
+      width: 30px; 
       height: 30px;
       border-radius: 50%;
       flex-shrink: 0;
@@ -175,67 +186,185 @@
       text-decoration: underline;
     }
 
-    .newslist {
+    /* TOURNAMENT RULES CONTAINER */
+    .rules-list {
       flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
     }
 
-    .news-item {
-      display: flex;
-      gap: 10px;
+    .rules-card {
+      background-color: #0055dd; 
+      border: 3px outset #4d90ff; 
+      border-radius: 4px;
+      padding: 16px;
+      min-width: 0;
+    }
+
+    .rules-header {
+      color: #ffff00;
+      font-size: 24px;
+      font-weight: bold;
+      text-decoration: underline;
+      text-shadow: 1px 1px 0px #000000;
+      margin-bottom: 8px;
+    }
+
+    .rules-datetime {
+      color: #ffffff;
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 4px;
+    }
+
+    .rules-note {
+      color: #ffff00;
+      font-size: 15px;
+      font-style: italic;
       margin-bottom: 16px;
     }
 
-    .news-thumb {
-      width: 48px;
-      height: 48px;
-      border: 1px solid #999999;
-      flex-shrink: 0;
+    .rules-section-title {
+      color: #ffff00;
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      text-decoration: underline;
     }
 
-    .news-headline a {
-      color: #ffff00; /* Bright yellow for news link visibility */
+    .rules-content {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #ffffff;
+    }
+
+    .rules-content ul {
+      margin-left: 24px;
+      margin-bottom: 16px;
+    }
+
+    .rules-content li {
+      margin-bottom: 8px;
+    }
+
+    .rules-important-box {
+      margin-top: 16px;
+      padding: 12px;
+      background-color: #003da8;
+      border: 2px inset #002b80;
+      border-radius: 4px;
+    }
+
+    .rules-important-title {
+      color: #ff4d4d;
       font-weight: bold;
-      text-decoration: underline;
+      font-size: 18px;
+      margin-bottom: 6px;
+      text-shadow: 1px 1px 0px #000000;
+    }
+
+    /* MOBILE BREAKPOINT RULES */
+    @media (max-width: 768px) {
+      .topnav-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .nav-links {
+        justify-content: center;
+      }
+
+      .page {
+        padding: 12px;
+        min-height: auto;
+      }
+
+      .header {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .title-slot {
+        font-size: 28px;
+      }
+
+      .body {
+        flex-direction: column;
+        padding: 0 0 16px;
+      }
+
+      .sidebar {
+        width: 100%;
+      }
     }
   </style>
 </head>
 <body>
   <nav class="topnav">
-  <div class="topnav-inner">
-    <div class="nav-links">
-      <!-- Added Home Button -->
-      <a href="index.html">Home</a>
-      <a href="features.html">Features</a>
-      <a href="gallery.html">Gallery</a>
-      <a href="rules.html">Rules</a>
-      <a href="https://discord.llomeli.com" target="_blank">Discord</a>
+    <div class="topnav-inner">
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="features.html">Features</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="rules.html">Rules</a>
+        <a href="https://discord.llomeli.com" target="_blank">Discord</a>
+      </div>
+      <span class="copyright">© All Rights Reserved</span>
     </div>
-    <span class="copyright">© All Rights Reserved</span>
-  </div>
-</nav>
+  </nav>
 
   <div class="page">
     <header class="header">
       <div class="badge">
         <img src="assets/server-icon.webp" alt="server mascot">
       </div>
-      <div class="title-slot">Tournaments</div>
+      <div class="title-slot">Tournament info</div>
       <div class="art-slot">
-         <img src="assets/ceruledgegif.gif" alt="garchomp" style="width: 145%; height: 145%; object-fit: contain; display: block;">
+        <img src="assets/ceruledgegif.gif" alt="Ceruledge" style="width: 100%; height: 100%; object-fit: contain; display: block;">
       </div>
     </header>
 
     <p class="intro">
-      we have CRAZY cobblemon tournaments coming soon...
+     <!-- SUBTEXT UNDER TOURNAMENTS FILL IN LATER BOY-->
     </p>
 
     
 
-    
+
+      <section class="rules-list">
+        <div class="rules-card">
+          <div class="rules-header">CRAZY Cobblemon Tournament</div>
+          <div class="rules-datetime">Friday, August 21, 2026 at 6:00 PM</div>
+          <div class="rules-note">(if you encounter any issues please let us know.)</div>
+          
+          <div class="rules-content">
+            <div class="rules-section-title">Rules:</div>
+            <p style="margin-bottom: 12px;">You WILL see a preview of your opponent's team right before the battle and you must lock in your team before the battle.</p>
+            
+            <ul>
+              <li><strong>Battle Format:</strong> Double Battle (Bring 6, Choose 4)</li>
+              <li><strong>Turn Limit:</strong> 20 turns maximum (results in a tie if exceeded)</li>
+              <li><strong>Gimmicks:</strong> No gimmicks allowed (e.g., Tera, Mega, Dynamax)</li>
+              <li><strong>BST Limit:</strong> No Pokémon with a Base Stat Total strictly above 600 (BST 600 is allowed)</li>
+              <li><strong>Pokémon Category Bans:</strong> No Legendaries, Mythics, or Paradox Pokémon</li>
+              <li><strong>Ability Ban:</strong> Pokémon with the ability Moody are not permitted</li>
+              <li><strong>Species:</strong> Players cannot have two Pokémon with the same Pokédex number on the same team</li>
+              <li><strong>Items:</strong> Players cannot have two of the same held items on their Pokémon at a time</li>
+              <li><strong>OHKO:</strong> A Pokémon may not have the moves Fissure, Guillotine, Horn Drill, or Sheer Cold in its moveset</li>
+              <li><strong>Sleep:</strong> Only one Pokémon may be put to sleep on the opposing team at a time, if not induced by a move such as Rest</li>
+              <li><strong>Endless Battle:</strong> Any moveset on any Pokémon that is capable of intentionally causing an endless battle is banned</li>
+            </ul>
+
+            <div class="rules-important-box">
+              <div class="rules-important-title">⚠️ IMPORTANT</div>
+              <p>Once you are <strong>#lockedin</strong> with your team/moves you can NOT change it mid way to gain an advantage. There will be moderators watching you select your team so no funny business.</p>
+            </div>
+          </div>
+        </div>
       </section>
-
     </div>
-
   </div>
 </body>
 </html>
