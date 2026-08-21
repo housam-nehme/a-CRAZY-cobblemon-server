@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Cobblemon Berry Collection Tracker - a CRAZY cobblemon server">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://crazycobblesmp.com/">
+  <meta property="og:title" content="Berry Tracker - a CRAZY cobblemon server">
+  <meta property="og:description" content="Track your complete berry collection on the server.">
+
+  <meta property="og:image" content="https://crazycobblesmp.com/assets/mascot%20(1).png">
+  <meta name="theme-color" content="#a058f2">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://crazycobblesmp.com/assets/mascot%20(1).png">
+
+  <link rel="icon" type="image/png" href="assets/logo (1).png">
+  <title>Berry Tracker - a CRAZY cobblemon server</title>
+
+  <style>
+    @font-face {
+      font-family: 'CobblemonFont';
+      src: url('assets/MinecraftCLEAN.otf') format('opentype'); 
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    body {
+      background-image: url('background.png');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center center;
+      background-attachment: fixed;
+      background-color: #e2b007;
+      font-family: 'CobblemonFont', Verdana, sans-serif;
+      font-size: 25px;
+      color: #000000;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* TOP NAV */
+    .topnav {
+      background: #000000;
+      width: 100%;
+      padding: 12px 24px;
+    }
+
+    .topnav-inner {
+      max-width: 1500px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between; 
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .topnav a,
+    .copyright {
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: bold;
+      text-transform: uppercase;
+      text-decoration: none;
+      line-height: 1;
+    }
+
+    .topnav a:hover {
+      text-decoration: underline;
+    }
+
+    /* MAIN PAGE CONTAINER */
+    .page {
+      max-width: 1250px;
+      width: calc(100% - 20px);
+      margin: 20px auto; 
+      background-color: #0066ff; 
+      border: 3px solid #000088;  
+      border-radius: 12px;  
+      padding: 15px;
+      color: #ffffff;
+      min-height: 1300px;
+    }
+
+    /* HEADER */
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px;
+    }
+
+    .badge img {
+      display: block;
+      width: 170px;
+      height: 170px;
+    }
+
+    .title-slot {
+      flex: 1;
+      min-width: 0;
+      height: auto;
+      min-height: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .title-img {
+      max-width: 100%;
+      max-height: 230px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .art-slot {
+      width: 150px;
+      height: 150px;
+      flex-shrink: 0;
+    }
+
+    .intro {
+      padding: 0 16px 16px;
+      line-height: 1.5;
+    }
+
+    .body {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding: 0 16px 24px;
+    }
+
+    /* TRACKER FULL WIDTH CONTAINER */
+    .tracker-content {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    /* STATUS & BUTTON CONTROLS */
+    .tracker-status-box {
+      background-color: #0055dd; 
+      border: 3px outset #4d90ff; 
+      border-radius: 4px;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .tracker-status-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tracker-status-title {
+      font-size: 22px;
+      font-weight: bold;
+      color: #ffff00;
+      text-shadow: 1px 1px 0px #000000;
+    }
+
+    .tracker-status-count {
+      font-size: 20px;
+      font-weight: bold;
+      color: #ffffff;
+      text-shadow: 1px 1px 0px #000000;
+    }
+
+    /* PROGRESS BAR */
+    .tracker-progress-outer {
+      width: 100%;
+      height: 26px;
+      background-color: #000000;
+      border: 3px inset #002b80;
+    }
+
+    .tracker-progress-inner {
+      width: 0%;
+      height: 100%;
+      background-color: #00dd22;
+    }
+
+    /* BUTTONS */
+    .tracker-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .tracker-btn {
+      background-color: #002b80;
+      color: #ffff00;
+      border: 3px outset #4d90ff;
+      padding: 8px 16px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      text-shadow: 1px 1px 0px #000000;
+      text-transform: uppercase;
+    }
+
+    .tracker-btn:hover {
+      background-color: #cc0000;
+      color: #ffffff;
+    }
+
+    .tracker-btn:active {
+      border: 3px inset #4d90ff;
+    }
+
+    .tracker-btn.active {
+      background-color: #006622;
+      border: 3px inset #00aa33;
+      color: #ffffff;
+    }
+
+    .tracker-btn-danger:hover {
+      background-color: #aa0000;
+      color: #ffffff;
+    }
+
+    /* BERRY CATEGORIES & GRID */
+    .category-block {
+      background-color: #0055dd; 
+      border: 3px outset #4d90ff; 
+      border-radius: 4px;
+      padding: 14px;
+      margin-bottom: 16px;
+    }
+
+    .category-title {
+      font-size: 22px;
+      font-weight: bold;
+      color: #ffff00;
+      text-shadow: 1px 1px 0px #000000;
+      border-bottom: 2px solid #002b80;
+      padding-bottom: 6px;
+      margin-bottom: 12px;
+    }
+
+    .berry-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 8px;
+    }
+
+    /* BERRY CARD */
+    .berry-card {
+      background-color: #003db3;
+      border: 3px outset #4d90ff;
+      padding: 6px 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .berry-card:hover {
+      background-color: #0047cc;
+    }
+
+    .berry-card.collected {
+      background-color: #006622;
+      border: 3px inset #00aa33;
+    }
+
+    .berry-checkbox {
+      width: 18px;
+      height: 18px;
+      background-color: #000000;
+      border: 2px inset #002b80;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: #00ff00;
+      font-size: 14px;
+      font-weight: bold;
+      line-height: 1;
+    }
+
+    .berry-card.collected .berry-checkbox::after {
+      content: "✓";
+    }
+
+    .berry-icon {
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
+      image-rendering: pixelated;
+      image-rendering: crisp-edges;
+      flex-shrink: 0;
+    }
+
+    .berry-label {
+      font-size: 16px;
+      font-weight: bold;
+      color: #ffffff;
+      line-height: 1.2;
+    }
+
+    .berry-card.collected .berry-label {
+      color: #aaffaa;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    /* RESPONSIVE / MOBILE */
+    @media (max-width: 768px) {
+      .topnav-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .nav-links {
+        justify-content: center;
+      }
+
+      .page {
+        padding: 12px;
+        min-height: auto;
+      }
+
+      .header {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .title-slot {
+        font-size: 28px;
+      }
+
+      .body {
+        padding: 0 0 16px;
+      }
+
+      .berry-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="topnav">
+    <div class="topnav-inner">
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="features.html">Features</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="rules.html">Rules</a>
+        <a href="https://discord.llomeli.com" target="_blank">Discord</a>
+        <a href="collection.html" >Collect</a>
+      </div>
+      <span class="copyright">© All Rights Reserved</span>
+    </div>
+  </nav>
+
+  <div class="page">
+    <header class="header">
+      <div class="badge">
+        <img src="assets/server-icon.webp" alt="server mascot">
+      </div>
+      <div class="title-slot">
+        <img src="assets/ACCS LOGO_IZACH.png" alt="a CRAZY cobblemon Server" class="title-img">
+      </div>
+      <div class="art-slot">
+        <img src="assets/blazikengif.gif" alt="Blaziken" style="width: 100%; height: 100%; object-fit: contain; display: block;">
+      </div>
+    </header>
+
+    <p class="intro">
+      Keep track of your complete server berry collection. Click any berry to check it off. Progress saves automatically in your browser.
+    </p>
+
+    <div class="body">
+
+      <section class="tracker-content">
+
+        <!-- STATUS / PROGRESS & BUTTONS -->
+        <div class="tracker-status-box">
+          <div class="tracker-status-header">
+            <span class="tracker-status-title">COLLECTION PROGRESS</span>
+            <span class="tracker-status-count" id="statsDisplay">0 / 0 (0%)</span>
+          </div>
+
+          <div class="tracker-progress-outer">
+            <div class="tracker-progress-inner" id="progressBar"></div>
+          </div>
+
+          <div class="tracker-controls">
+            <button class="tracker-btn" id="showMissingBtn">Show Missing</button>
+            <button class="tracker-btn" id="showFoundBtn">Show Found</button>
+            <button class="tracker-btn tracker-btn-danger" id="resetBtn">Reset</button>
+          </div>
+        </div>
+
+        <!-- BERRY SECTIONS CONTAINER -->
+        <div id="trackerList"></div>
+
+      </section>
+
+    </div>
+  </div>
+
+  <script>
+    const BERRY_DATA = {
+      "Status & Healing Berries": [
+        "Cheri Berry", "Chesto Berry", "Pecha Berry", "Rawst Berry",
+        "Aspear Berry", "Leppa Berry", "Oran Berry", "Persim Berry",
+        "Lum Berry", "Sitrus Berry"
+      ],
+      "EV Reducing Berries": [
+        "Pomeg Berry", "Kelpsy Berry", "Qualot Berry", 
+        "Hondew Berry", "Grepa Berry", "Tamato Berry"
+      ],
+      "Type-Resist Berries": [
+        "Occa Berry", "Passho Berry", "Wacan Berry", "Rindo Berry",
+        "Yache Berry", "Chople Berry", "Kebia Berry", "Shuca Berry",
+        "Coba Berry", "Payapa Berry", "Tanga Berry", "Charti Berry",
+        "Kasib Berry", "Haban Berry", "Colbur Berry", "Babiri Berry",
+        "Chilan Berry", "Roseli Berry"
+      ],
+      "Pinch & Stat Berries": [
+        "Liechi Berry", "Ganlon Berry", "Salac Berry", "Petaya Berry",
+        "Apicot Berry", "Lansat Berry", "Starf Berry", "Micle Berry",
+        "Custap Berry", "Jaboca Berry", "Rowap Berry", "Kee Berry",
+        "Maranga Berry", "Enigma Berry"
+      ],
+      "Flavour & Pokéblock Berries": [
+        "Figy Berry", "Wiki Berry", "Mago Berry", "Aguav Berry", "Iapapa Berry",
+        "Razz Berry", "Bluk Berry", "Nanab Berry", "Wepear Berry", "Pinap Berry",
+        "Cornn Berry", "Magost Berry", "Rabuta Berry", "Nomel Berry", "Spelon Berry",
+        "Pamtre Berry", "Watmel Berry", "Durin Berry", "Belue Berry"
+      ]
+    };
+
+    const STORAGE_KEY = "crazycobble_berry_collection";
+    let collectedBerries = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+    let currentFilter = "all"; // 'all', 'missing', 'found'
+
+    const trackerList = document.getElementById("trackerList");
+    const showMissingBtn = document.getElementById("showMissingBtn");
+    const showFoundBtn = document.getElementById("showFoundBtn");
+    const resetBtn = document.getElementById("resetBtn");
+    const statsDisplay = document.getElementById("statsDisplay");
+    const progressBar = document.getElementById("progressBar");
+
+    function getBerrySlug(name) {
+      return name.toLowerCase().replace(/\s+/g, "-");
+    }
+
+    function getTotalBerryCount() {
+      return Object.values(BERRY_DATA).flat().length;
+    }
+
+    function saveState() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(collectedBerries));
+      updateProgress();
+    }
+
+    function updateProgress() {
+      const total = getTotalBerryCount();
+      const collectedCount = Object.keys(collectedBerries).filter(k => collectedBerries[k]).length;
+      const percentage = Math.round((collectedCount / total) * 100) || 0;
+
+      statsDisplay.textContent = `${collectedCount} / ${total} (${percentage}%)`;
+      progressBar.style.width = `${percentage}%`;
+    }
+
+    function renderTracker() {
+      trackerList.innerHTML = "";
+
+      for (const [category, berries] of Object.entries(BERRY_DATA)) {
+        const section = document.createElement("div");
+        section.className = "category-block";
+
+        const title = document.createElement("div");
+        title.className = "category-title";
+        title.textContent = category;
+        section.appendChild(title);
+
+        const grid = document.createElement("div");
+        grid.className = "berry-grid";
+
+        berries.forEach(berry => {
+          const card = document.createElement("div");
+          card.className = `berry-card ${collectedBerries[berry] ? "collected" : ""}`;
+          card.dataset.berry = berry;
+
+          const checkbox = document.createElement("div");
+          checkbox.className = "berry-checkbox";
+
+          const img = document.createElement("img");
+          img.className = "berry-icon";
+          img.alt = berry;
+          img.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/${getBerrySlug(berry)}.png`;
+          img.loading = "lazy";
+
+          const name = document.createElement("span");
+          name.className = "berry-label";
+          name.textContent = berry;
+
+          card.appendChild(checkbox);
+          card.appendChild(img);
+          card.appendChild(name);
+
+          card.addEventListener("click", () => {
+            collectedBerries[berry] = !collectedBerries[berry];
+            if (!collectedBerries[berry]) delete collectedBerries[berry];
+            card.classList.toggle("collected");
+            saveState();
+            applyFilters();
+          });
+
+          grid.appendChild(card);
+        });
+
+        section.appendChild(grid);
+        trackerList.appendChild(section);
+      }
+
+      updateProgress();
+    }
+
+    function applyFilters() {
+      const sections = document.querySelectorAll(".category-block");
+
+      sections.forEach(section => {
+        const cards = section.querySelectorAll(".berry-card");
+        let visibleInCategory = 0;
+
+        cards.forEach(card => {
+          const isCollected = card.classList.contains("collected");
+          let visible = true;
+
+          if (currentFilter === "missing" && isCollected) visible = false;
+          if (currentFilter === "found" && !isCollected) visible = false;
+
+          if (visible) {
+            card.classList.remove("hidden");
+            visibleInCategory++;
+          } else {
+            card.classList.add("hidden");
+          }
+        });
+
+        section.classList.toggle("hidden", visibleInCategory === 0);
+      });
+    }
+
+    showMissingBtn.addEventListener("click", () => {
+      if (currentFilter === "missing") {
+        currentFilter = "all";
+        showMissingBtn.classList.remove("active");
+      } else {
+        currentFilter = "missing";
+        showMissingBtn.classList.add("active");
+        showFoundBtn.classList.remove("active");
+      }
+      applyFilters();
+    });
+
+    showFoundBtn.addEventListener("click", () => {
+      if (currentFilter === "found") {
+        currentFilter = "all";
+        showFoundBtn.classList.remove("active");
+      } else {
+        currentFilter = "found";
+        showFoundBtn.classList.add("active");
+        showMissingBtn.classList.remove("active");
+      }
+      applyFilters();
+    });
+
+    resetBtn.addEventListener("click", () => {
+      if (confirm("Reset berry tracker progress?")) {
+        collectedBerries = {};
+        saveState();
+        currentFilter = "all";
+        showMissingBtn.classList.remove("active");
+        showFoundBtn.classList.remove("active");
+        renderTracker();
+        applyFilters();
+      }
+    });
+
+    renderTracker();
+  </script>
+</body>
+</html>

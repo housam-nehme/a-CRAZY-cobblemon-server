@@ -114,27 +114,29 @@
 
     .badge img {
       display: block;
-      width: 70px;
-      height: 70px;
+      width: 170px;
+      height: 170px;
     }
 
-    .title-slot {
+      .title-slot {
       flex: 1;
-      min-width: 0; /* FIX 1: Allows title flexbox to shrink on mobile */
+      min-width: 0;
       height: auto;
       min-height: 90px;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #ffeb3b; 
-      font-size: 45px;
-      text-align: center;
-      word-break: break-word; /* Prevents title from pushing screen wide */
+    }
+        .title-img {
+      max-width: 100%;
+      max-height: 230px; /* this do the size*/
+      object-fit: contain;
+      display: block;
     }
 
     .art-slot {
-      width: 90px;
-      height: 90px;
+      width: 150px;
+      height: 150px;
       flex-shrink: 0;
     }
 
@@ -390,6 +392,8 @@
         <a href="gallery.html">Gallery</a>
         <a href="rules.html">Rules</a>
         <a href="https://discord.llomeli.com" target="_blank">Discord</a>
+        <a href="collection.html" >Collect</a>
+
       </div>
       <span class="copyright">© All Rights Reserved</span>
     </div>
@@ -398,9 +402,11 @@
   <div class="page">
     <header class="header">
       <div class="badge">
-        <img src="assets/server-icon.webp" alt="server mascot">
+        <img src="assets/server-icon.webp" alt="server mascot" >
       </div>
-      <div class="title-slot">a CRAZY cobblemon Server</div>
+      <div class="title-slot">
+        <img src="assets/ACCS LOGO_IZACH.png" alt="a CRAZY cobblemon Server" class="title-img">
+      </div>
       <div class="art-slot">
         <img src="assets/blazikengif.gif" alt="Blaziken" style="width: 100%; height: 100%; object-fit: contain; display: block;">
       </div>
