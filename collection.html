@@ -50,7 +50,6 @@
       padding: 0;
     }
 
-    /* TOP NAV */
     .topnav {
       background: #000000;
       width: 100%;
@@ -87,7 +86,6 @@
       text-decoration: underline;
     }
 
-    /* MAIN PAGE CONTAINER */
     .page {
       max-width: 1250px;
       width: calc(100% - 20px);
@@ -100,7 +98,6 @@
       min-height: 1300px;
     }
 
-    /* HEADER */
     .header {
       display: flex;
       align-items: center;
@@ -149,7 +146,6 @@
       padding: 0 16px 24px;
     }
 
-    /* TRACKER FULL WIDTH CONTAINER */
     .tracker-content {
       width: 100%;
       display: flex;
@@ -157,7 +153,6 @@
       gap: 16px;
     }
 
-    /* STATUS & BUTTON CONTROLS */
     .tracker-status-box {
       background-color: #0055dd; 
       border: 3px outset #4d90ff; 
@@ -190,7 +185,6 @@
       text-shadow: 1px 1px 0px #000000;
     }
 
-    /* PROGRESS BAR */
     .tracker-progress-outer {
       width: 100%;
       height: 26px;
@@ -204,12 +198,27 @@
       background-color: #00dd22;
     }
 
-    /* BUTTONS */
     .tracker-controls {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
       align-items: center;
+    }
+
+    .tracker-search {
+      flex: 1;
+      min-width: 200px;
+      padding: 8px 12px;
+      background-color: #002b80;
+      border: 3px inset #001a4d;
+      color: #ffffff;
+      font-size: 18px;
+      font-weight: bold;
+      outline: none;
+    }
+
+    .tracker-search::placeholder {
+      color: #a0c0ff;
     }
 
     .tracker-btn {
@@ -244,7 +253,6 @@
       color: #ffffff;
     }
 
-    /* BERRY CATEGORIES & GRID */
     .category-block {
       background-color: #0055dd; 
       border: 3px outset #4d90ff; 
@@ -269,7 +277,6 @@
       gap: 8px;
     }
 
-    /* BERRY CARD */
     .berry-card {
       background-color: #003db3;
       border: 3px outset #4d90ff;
@@ -333,7 +340,6 @@
       display: none !important;
     }
 
-    /* RESPONSIVE / MOBILE */
     @media (max-width: 768px) {
       .topnav-inner {
         flex-direction: column;
@@ -365,7 +371,7 @@
       .berry-grid {
         grid-template-columns: 1fr;
       }
-    }
+     }
   </style>
 </head>
 <body>
@@ -378,7 +384,7 @@
         <a href="gallery.html">Gallery</a>
         <a href="rules.html">Rules</a>
         <a href="https://discord.llomeli.com" target="_blank">Discord</a>
-        <a href="collection.html" >Collect</a>
+        <a href="collection.html">Collect</a>
       </div>
       <span class="copyright">© All Rights Reserved</span>
     </div>
@@ -405,7 +411,6 @@
 
       <section class="tracker-content">
 
-        <!-- STATUS / PROGRESS & BUTTONS -->
         <div class="tracker-status-box">
           <div class="tracker-status-header">
             <span class="tracker-status-title">COLLECTION PROGRESS</span>
@@ -417,13 +422,13 @@
           </div>
 
           <div class="tracker-controls">
+            <input type="text" id="searchInput" class="tracker-search" placeholder="Search berries...">
             <button class="tracker-btn" id="showMissingBtn">Show Missing</button>
             <button class="tracker-btn" id="showFoundBtn">Show Found</button>
             <button class="tracker-btn tracker-btn-danger" id="resetBtn">Reset</button>
           </div>
         </div>
 
-        <!-- BERRY SECTIONS CONTAINER -->
         <div id="trackerList"></div>
 
       </section>
@@ -436,7 +441,7 @@
       "Status & Healing Berries": [
         "Cheri Berry", "Chesto Berry", "Pecha Berry", "Rawst Berry",
         "Aspear Berry", "Leppa Berry", "Oran Berry", "Persim Berry",
-        "Lum Berry", "Sitrus Berry"
+        "Lum Berry", "Sitrus Berry", "Eggant Berry", "Hopo Berry", "Touga Berry"
       ],
       "EV Reducing Berries": [
         "Pomeg Berry", "Kelpsy Berry", "Qualot Berry", 
@@ -463,19 +468,30 @@
       ]
     };
 
+    const CUSTOM_SPRITES = {
+      "Eggant Berry": "assets/eggant-berry.png",
+      "Hopo Berry": "assets/hopo-berry.png",
+      "Touga Berry": "assets/touga-berry.png"
+    };
+
     const STORAGE_KEY = "crazycobble_berry_collection";
     let collectedBerries = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
-    let currentFilter = "all"; // 'all', 'missing', 'found'
+    let currentFilter = "all";
 
     const trackerList = document.getElementById("trackerList");
+    const searchInput = document.getElementById("searchInput");
     const showMissingBtn = document.getElementById("showMissingBtn");
     const showFoundBtn = document.getElementById("showFoundBtn");
     const resetBtn = document.getElementById("resetBtn");
     const statsDisplay = document.getElementById("statsDisplay");
     const progressBar = document.getElementById("progressBar");
 
-    function getBerrySlug(name) {
-      return name.toLowerCase().replace(/\s+/g, "-");
+    function getBerryImageSrc(name) {
+      if (CUSTOM_SPRITES[name]) {
+        return CUSTOM_SPRITES[name];
+      }
+      const slug = name.toLowerCase().replace(/\s+/g, "-");
+      return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/${slug}.png`;
     }
 
     function getTotalBerryCount() {
@@ -522,7 +538,7 @@
           const img = document.createElement("img");
           img.className = "berry-icon";
           img.alt = berry;
-          img.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/${getBerrySlug(berry)}.png`;
+          img.src = getBerryImageSrc(berry);
           img.loading = "lazy";
 
           const name = document.createElement("span");
@@ -552,6 +568,7 @@
     }
 
     function applyFilters() {
+      const query = searchInput.value.toLowerCase().trim();
       const sections = document.querySelectorAll(".category-block");
 
       sections.forEach(section => {
@@ -559,13 +576,16 @@
         let visibleInCategory = 0;
 
         cards.forEach(card => {
+          const name = card.dataset.berry.toLowerCase();
           const isCollected = card.classList.contains("collected");
-          let visible = true;
 
-          if (currentFilter === "missing" && isCollected) visible = false;
-          if (currentFilter === "found" && !isCollected) visible = false;
+          const matchesSearch = name.includes(query);
+          let matchesFilter = true;
 
-          if (visible) {
+          if (currentFilter === "missing" && isCollected) matchesFilter = false;
+          if (currentFilter === "found" && !isCollected) matchesFilter = false;
+
+          if (matchesSearch && matchesFilter) {
             card.classList.remove("hidden");
             visibleInCategory++;
           } else {
@@ -576,6 +596,8 @@
         section.classList.toggle("hidden", visibleInCategory === 0);
       });
     }
+
+    searchInput.addEventListener("input", applyFilters);
 
     showMissingBtn.addEventListener("click", () => {
       if (currentFilter === "missing") {
@@ -608,6 +630,7 @@
         currentFilter = "all";
         showMissingBtn.classList.remove("active");
         showFoundBtn.classList.remove("active");
+        searchInput.value = "";
         renderTracker();
         applyFilters();
       }
