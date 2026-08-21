@@ -371,7 +371,7 @@
       .berry-grid {
         grid-template-columns: 1fr;
       }
-     }
+    }
   </style>
 </head>
 <body>
@@ -423,8 +423,8 @@
 
           <div class="tracker-controls">
             <input type="text" id="searchInput" class="tracker-search" placeholder="Search berries...">
-            <button class="tracker-btn" id="showMissingBtn">Show Missing</button>
-            <button class="tracker-btn" id="showFoundBtn">Show Found</button>
+            <button class="tracker-btn" id="showMissingBtn">Show Missing (0)</button>
+            <button class="tracker-btn" id="showFoundBtn">Show Found (0)</button>
             <button class="tracker-btn tracker-btn-danger" id="resetBtn">Reset</button>
           </div>
         </div>
@@ -506,10 +506,14 @@
     function updateProgress() {
       const total = getTotalBerryCount();
       const collectedCount = Object.keys(collectedBerries).filter(k => collectedBerries[k]).length;
+      const missingCount = total - collectedCount;
       const percentage = Math.round((collectedCount / total) * 100) || 0;
 
       statsDisplay.textContent = `${collectedCount} / ${total} (${percentage}%)`;
       progressBar.style.width = `${percentage}%`;
+
+      showMissingBtn.textContent = `Show Missing (${missingCount})`;
+      showFoundBtn.textContent = `Show Found (${collectedCount})`;
     }
 
     function renderTracker() {
