@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+
+<!-- hi izach how was college !-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="This is a CRAZY cobblemon server. We are keeping it relatively small kinda like HermitCraft. Come Join!">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://crazycobblesmp.com/">
+  <meta property="og:title" content="a CRAZY cobblemon server">
+  <meta property="og:description" content="Welcome to a CRAZY cobblemon server.">
+
+  <meta property="og:image" content="https://crazycobblesmp.com/assets/mascot%20(1).png">
+  <meta name="theme-color" content="#a058f2">
+
+  <!-- FORCES THE LARGE BANNER IN DISCORD -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://crazycobblesmp.com/assets/mascot%20(1).png">
+
+  <link rel="icon" type="image/png" href="assets/logo (1).png">
+  <title>a CRAZY cobblemon server</title>
+
+  <style>
+    @font-face {
+      font-family: 'CobblemonFont';
+      src: url('assets/MinecraftCLEAN.otf') format('opentype'); 
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    body {
+      background-image: url('background.png');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center center;
+      background-attachment: fixed;
+      background-color: #e2b007;
+      font-family: 'CobblemonFont', Verdana, sans-serif;
+      font-size: 25px;
+      color: #000000;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* TOP NAV & RESPONSIVE NAV FIXES */
+    .topnav {
+      background: #000000;
+      width: 100%;
+      padding: 12px 24px;
+    }
+
+    .topnav-inner {
+    max-width: 1500px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    flex-wrap: wrap; /* ADD THIS: allows items to stack/wrap on small screens */
+    gap: 10px;       /* ADD THIS: adds clean spacing when wrapped */
+  }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .topnav a,
+    .copyright {
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: bold;
+      text-transform: uppercase;
+      text-decoration: none;
+      line-height: 1;
+    }
+
+    .topnav a:hover {
+      text-decoration: underline;
+    }
+
+    /* MAIN PAGE CONTAINER */
+    .page {
+    max-width: 1250px;
+    width: calc(100% - 20px); /* keeps 10px margins on left/right of phone screen */
+    margin: 20px auto; 
+    
+    background-color: #0066ff; 
+    border: 3px solid #000088;  
+    border-radius: 12px;  
+    
+    padding: 15px;            /* from 25px to 15px for mobile breathing room */
+    
+    color: #ffffff;
+    min-height: 1300px;
+}
+
+    /* HEADER FIXES */
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px;
+    }
+
+    .badge img {
+      display: block;
+      width: 170px;
+      height: 170px;
+    }
+
+      .title-slot {
+      flex: 1;
+      min-width: 0;
+      height: auto;
+      min-height: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+        .title-img {
+      max-width: 100%;
+      max-height: 230px; /* this do the size*/
+      object-fit: contain;
+      display: block;
+    }
+
+    .art-slot {
+      width: 150px;
+      height: 150px;
+      flex-shrink: 0;
+    }
+
+    .intro {
+      padding: 0 16px 16px;
+      line-height: 1.5;
+    }
+
+    .body {
+      display: flex;
+      gap: 30px;
+      padding: 0 16px 24px;
+    }
+
+    .sidebar {
+      width: 320px; 
+      flex-shrink: 0;
+    }
+
+    .sidebar-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .dot {
+      width: 30px; 
+      height: 30px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .dot-features { background: #2e8b57; }
+    .dot-gallery  { background: #cc3333; }
+    .dot-rules    { background: #3366cc; }
+    .dot-connect  { background: #d9a400; }
+    .dot-discord  { background: #7a3ba0; }
+
+    .sidebar-item a {
+      color: #f1eded;
+      font-size: 23px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .sidebar-item a:hover {
+      text-decoration: underline;
+    }
+
+    /* NEWS SECTION CONTAINER FIXES */
+    .newslist {
+      flex: 1;
+      min-width: 0; /* FIX 2: Prevents news container from forcing horizontal scroll */
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .news-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 12px;
+      background-color: #0055dd; 
+      border: 3px outset #4d90ff; 
+      border-radius: 4px;
+      min-width: 0;
+    }
+
+    .news-thumb {
+      width: 300px;
+      max-width: 100%; /* FIX 3: Makes fixed 300px thumbnail scale down on mobile */
+      height: auto;
+      aspect-ratio: 2 / 1;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 3px inset #002b80;
+      background-color: #000000;
+      image-rendering: pixelated;
+      image-rendering: crisp-edges;
+    }
+
+    .news-content {
+      flex: 1;
+      min-width: 0; /* FIX 4: Allows text container to shrink below content width */
+    }
+
+    .news-headline {
+      margin-bottom: 6px;
+    }
+
+    .news-headline a {
+      color: #ffff00; 
+      font-weight: bold;
+      font-size: 20px;
+      text-decoration: underline;
+      text-shadow: 1px 1px 0px #000000; 
+      word-break: break-word; /* Prevents continuous link text from breaking bounds */
+    }
+
+    .news-headline a:hover {
+      color: #ffffff;
+      background-color: #cc0000; 
+      text-decoration: none;
+    }
+
+    .news-description {
+      color: #ffffff;
+      font-size: 15px;
+      line-height: 1.4;
+    }
+
+    /* TIKTOK STYLE VIDEO SECTION */
+    .video-section {
+      margin-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: stretch;
+      gap: 20px;
+    }
+
+    .tiktok-card {
+      width: 300px;
+      max-width: 100%;
+      background-color: #0055dd;
+      border: 3px outset #4d90ff;
+      border-radius: 8px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .tiktok-video-wrapper {
+      width: 100%;
+      aspect-ratio: 9 / 16;
+      background-color: #000000;
+      border: 3px inset #002b80;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .tiktok-video-wrapper video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    video:fullscreen {
+      object-fit: contain;
+      background-color: #000;
+    }
+
+    video:-webkit-full-screen {
+      object-fit: contain;
+      background-color: #000;
+    }
+
+    video:-moz-full-screen {
+      object-fit: contain;
+      background-color: #000;
+    }
+
+    .tour-card {
+      flex: 1;
+      min-width: 0;
+      background-color: #0055dd;
+      border: 3px outset #4d90ff;
+      border-radius: 8px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .tour-video-wrapper {
+      width: 100%;
+      flex: 1;
+      background-color: #000000;
+      border: 3px inset #002b80;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .tour-video-wrapper video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ==========================================================================
+       MOBILE BREAKPOINT RULES (Triggers on phone screens <= 768px wide)
+       ========================================================================== */
+    @media (max-width: 768px) {
+      .topnav-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .nav-links {
+        justify-content: center;
+      }
+
+      .page {
+        padding: 12px;
+        min-height: auto;
+      }
+
+      .header {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .title-slot {
+        font-size: 28px;
+      }
+
+      .body {
+        flex-direction: column;
+        padding: 0 0 16px;
+      }
+
+      .sidebar {
+        width: 100%;
+      }
+
+      .news-item {
+        flex-direction: column;
+      }
+
+      .news-thumb {
+        width: 100%;
+      }
+
+      .video-section {
+        flex-direction: column;
+      }
+
+      .tiktok-card {
+        width: 100%;
+      }
+    }
+</style>
+</head>
+<body>
+  <nav class="topnav">
+    <div class="topnav-inner">
+      <div class="nav-links">
+        <a href="gallery.html">Gallery</a>
+        <a href="rules.html">Rules</a>
+        <a href="https://discord.llomeli.com" target="_blank">Discord</a>
+        <a href="collection.html" >Collect</a>
+
+      </div>
+      <span class="copyright">© All Rights Reserved</span>
+    </div>
+  </nav>
+
+  <div class="page">
+    <header class="header">
+      <div class="badge">
+        <img src="assets/server-icon.webp" alt="server mascot" >
+      </div>
+      <div class="title-slot">
+        <img src="assets/ACCS LOGO_IZACH.png" alt="a CRAZY cobblemon Server" class="title-img">
+      </div>
+      <div class="art-slot">
+        <img src="assets/blazikengif.gif" alt="Blaziken" style="width: 100%; height: 100%; object-fit: contain; display: block;">
+      </div>
+    </header>
+
+    <p class="intro">
+       We are a small tight knit community similiar to HermitCraft. If you enjoy Pokémon and Minecraft then you don't have to think twice. Welcoming any new trainers!
+    </p>
+
+    <div class="body">
+
+      <aside class="sidebar">
+        <div class="sidebar-item">
+          <span class="dot dot-features"></span>
+          <a href="https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-1" target="_blank" rel="noopener noreferrer">Minecraft 1.21.1</a>
+        </div>
+        <div class="sidebar-item">
+          <span class="dot dot-gallery"></span>
+          <a href="tournament.html">Tournaments</a>
+        </div>
+        <div class="sidebar-item">
+          <span class="dot dot-rules"></span>
+          <a href=".html">Community</a>
+        </div>
+        <div class="sidebar-item">
+          <span class="dot dot-connect"></span>
+          <a href="connect.html">Meet the team</a>
+        </div>
+        <div class="sidebar-item">
+          <span class="dot dot-discord"></span>
+          <a href="https://legendarymonuments.com/" target="_blank" rel="noopener noreferrer">Legendary Monuments Wiki</a>
+        </div>
+      </aside>
+
+      <section class="newslist">
+        <div class="news-item">
+          <img src="assets/treeboy.png" alt="Crazy Cobblemon Server" class="news-thumb">
+          <div class="news-content">
+            <div class="news-headline">
+              <a href="https://discord.llomeli.com" target="_blank">Welcome to the CRAZY cobblemon server. Join now, Claim your land!</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="news-item">
+          <img src="assets/gal-dojo.jpg" alt="Battles Soon" class="news-thumb coin-icon">
+          <div class="news-content">
+            <div class="news-headline">
+              <a href="tournament.html">FIRST TOURNAMENT IS IN THE BOOKS. JOIN THE DISCORD AND SUGGEST IDEAS FOR THE NEXT!</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- VIDEO SECTION: full page width, sibling of .body -->
+    <div class="video-section">
+      <div class="tour-card">
+        <div class="tour-video-wrapper">
+          <video controls>
+            <source src="assets/TOUR.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+
+      <div class="tiktok-card">
+        <div class="tiktok-video-wrapper">
+          <video controls autoplay loop muted playsinline>
+            <source src="assets/crazycobblesmp.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
