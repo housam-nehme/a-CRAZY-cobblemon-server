@@ -18,7 +18,7 @@
             width: 100%;
             min-height: 100vh;
             overflow-x: hidden;
-            background: url('assets/gal-hq\ \(1\).jpg') center/cover no-repeat fixed #05020a;
+            background: url('assets/gal-hq\ \(1\).jpg') center center / cover no-repeat fixed #05020a;
             font-family: "Century Gothic", "Twentieth Century", AppleGothic, sans-serif;
             color: #d1c8d6;
             font-size: 14px;
@@ -550,13 +550,13 @@
     </style>
 </head>
 <body>
-
+<!--ignore this just tesgint smth-->
     <div class="scanlines"></div>
 
 <!-- BG MUSIC BUTTON-->
     <audio id="bg-music" loop>
     <!-- Using a direct audio stream/file url or you can host an mp3 of the track -->
-    <source src="assets/pokemon-lofi.mp3" type="audio/mpeg">
+    <source src="assets/NationalParkOST.mp3" type="audio/mpeg">
 </audio>
 
 <button id="music-toggle-btn" onclick="toggleMusic()" style="position: fixed; bottom: 20px; right: 20px; z-index: 10000; background: #000; color: #ffeb99; border: 2px solid #ffeb99; padding: 10px 15px; font-family: 'Century Gothic', sans-serif; font-weight: bold; cursor: pointer; border-radius: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.8); text-transform: uppercase; font-size: 12px;">
@@ -754,8 +754,8 @@ const music = document.getElementById('bg-music');
 const musicBtn = document.getElementById('music-toggle-btn');
 let wasMusicPlayingBeforeTrailer = false;
 
-// Set volume to 30% (70% quieter)
-music.volume = 0.025;
+// change accordiiingly
+music.volume = 0.40;
 
 // Check saved preference on page load
 window.addEventListener('DOMContentLoaded', () => {
