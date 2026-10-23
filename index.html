@@ -18,7 +18,7 @@
             width: 100%;
             min-height: 100vh;
             overflow-x: hidden;
-            background: url('assets/gal-hq\ \(1\).jpg') center center / cover no-repeat fixed #05020a;
+            background: url('assets/spookycoumarine.png') center center / cover no-repeat fixed #05020a;
             font-family: "Century Gothic", "Twentieth Century", AppleGothic, sans-serif;
             color: #d1c8d6;
             font-size: 14px;
@@ -503,6 +503,172 @@
             letter-spacing: 1px;
         }
 
+        /* Music button hover (moved out of the media query so it works on desktop too) */
+        #music-toggle-btn:hover {
+            background: #ffeb99 !important;
+            color: #000 !important;
+        }
+
+        /* ===== BUILDS PHOTO VIEWER ===== */
+        .viewer {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .viewer-screen {
+            position: relative;
+            flex: 1;
+            aspect-ratio: 16 / 9;
+            background: #000;
+            border-top: 2px solid #000;
+            border-left: 2px solid #000;
+            border-bottom: 2px solid #5c4a70;
+            border-right: 2px solid #5c4a70;
+            box-shadow: inset 0 0 30px rgba(0,0,0,0.9);
+            overflow: hidden;
+            cursor: zoom-in;
+        }
+
+        .viewer-screen img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .viewer-screen img.flicker {
+            animation: flicker 0.25s steps(4, end);
+        }
+
+        @keyframes flicker {
+            0%   { opacity: 0; }
+            25%  { opacity: 0.8; }
+            50%  { opacity: 0.2; }
+            100% { opacity: 1; }
+        }
+
+        .viewer-hud {
+            position: absolute;
+            top: 8px;
+            left: 10px;
+            font-size: 12px;
+            letter-spacing: 2px;
+            color: #ffeb99;
+            text-shadow: 1px 1px 0 #000, 0 0 8px rgba(255,235,153,0.6);
+            background: rgba(0,0,0,0.6);
+            padding: 3px 8px;
+            border: 1px solid rgba(255,235,153,0.3);
+            pointer-events: none;
+        }
+
+        .viewer-arrow {
+            width: 44px;
+            height: 80px;
+            background: linear-gradient(to bottom, rgba(40,30,50,0.9), rgba(5,5,5,0.9));
+            color: #ffeb99;
+            border-top: 1px solid #5c4a70;
+            border-left: 1px solid #5c4a70;
+            border-bottom: 1px solid #000;
+            border-right: 1px solid #000;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.15s steps(3, end);
+        }
+
+        .viewer-arrow:hover { background: #ffeb99; color: #000; }
+        .viewer-arrow:active { transform: translate(1px, 1px); }
+
+        .viewer-caption {
+            margin-top: 12px;
+            text-align: center;
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #ffeb99;
+            text-shadow: 1px 1px 0 #000;
+            min-height: 22px;
+        }
+
+        .viewer-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+       
+
+        .viewer-btn:hover { background: #ffeb99; color: #000; }
+
+        .filmstrip {
+            display: flex;
+            gap: 8px;
+            margin-top: 15px;
+            padding: 8px;
+            background: rgba(0,0,0,0.6);
+            border: 1px solid #000;
+            border-top: 1px solid #5c4a70;
+            overflow-x: auto;
+        }
+
+        .filmstrip img {
+            height: 60px;
+            width: 100px;
+            object-fit: cover;
+            flex-shrink: 0;
+            cursor: pointer;
+            border: 2px solid #1a1a1a;
+            opacity: 0.45;
+            filter: grayscale(60%);
+            transition: all 0.15s steps(3, end);
+        }
+
+        .filmstrip img:hover { opacity: 0.8; }
+
+        .filmstrip img.active {
+            opacity: 1;
+            filter: none;
+            border-color: #ffeb99;
+            box-shadow: 0 0 10px rgba(255,235,153,0.5);
+        }
+
+        /* Fullscreen lightbox */
+        #lightbox {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0,0,0,0.92);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+
+        #lightbox.active { display: flex; }
+
+        #lightbox img {
+            max-width: 92vw;
+            max-height: 88vh;
+            border: 2px solid #ffeb99;
+            box-shadow: 0 0 40px rgba(255,235,153,0.25);
+        }
+
+        #lightbox-caption {
+            position: absolute;
+            bottom: 20px;
+            left: 0; right: 0;
+            text-align: center;
+            color: #ffeb99;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow: 1px 1px 0 #000;
+        }
+
+        @media (max-width: 900px) {
+            .viewer-arrow { width: 32px; height: 60px; }
+            .filmstrip img { height: 48px; width: 80px; }
+        }
+
         /* Mobile Responsiveness Improvements */
         @media (max-width: 900px) {
             .main-container {
@@ -542,11 +708,7 @@
                 width: 90vw;
                 height: 350px;
             }
-            #music-toggle-btn:hover {
-            background: #ffeb99;
-            color: #000;
-            }
-        }w
+        }
     </style>
 </head>
 <body>
@@ -565,6 +727,12 @@
 
 
     <div id="table-overlay" onclick="closeAllCards()"></div>
+
+    <!-- Fullscreen image viewer for the Builds tab -->
+    <div id="lightbox">
+        <img id="lightbox-img" src="" alt="">
+        <div id="lightbox-caption"></div>
+    </div>
 
     <div class="main-container" id="main-wrap">
         
@@ -648,13 +816,23 @@
             <h1>BUILD SHOWCASE</h1>
             <div class="divider"></div>
             <div class="beveled-box">
-                <h2>GALLERY UNDER CONSTRUCTION</h2>
-                <p>Check back later for massive community builds, gyms, and redstone contraptions.</p>
+                <h2>pictures </h2>
+                <div class="viewer">
+                    <button class="viewer-arrow" id="g-prev">&#9664;</button>
+                    <div class="viewer-screen" id="g-screen">
+                        <img id="g-main" src="" alt="">
+                        <div class="viewer-hud">IMG <span id="g-count"></span></div>
+                    </div>
+                    <button class="viewer-arrow" id="g-next">&#9654;</button>
+                </div>
+                <div class="viewer-caption" id="g-caption"></div>
+               
+                <div class="filmstrip" id="g-strip"></div>
             </div>
         </div>
 
         <div id="tournaments" class="content-section">
-            <h1>BATTLE ARENA</h1>
+            <h1>BATTLE</h1>
             <div class="divider"></div>
             <div class="beveled-box">
                 <h2>TOURNAMENTS</h2>
@@ -667,7 +845,7 @@
             <div class="divider"></div>
             <div class="beveled-box">
                 <h2>MINECRAFT 1.21.1</h2>
-                <p>A tight-knit, HermitCraft-style Pokémon adventure built on trust and massive community projects.</p>
+                <p>Pokémon adventure</p>
             </div>
         </div>
 
@@ -818,6 +996,83 @@ window.closeCard = function(event, wrapper) {
         wasMusicPlayingBeforeTrailer = false;
     }
 };
+
+// ===== BUILDS PHOTO VIEWER =====
+// edit this list to add or remove pictures.
+const galleryImages = [
+    { src: 'assets/tofoten1.png', title: 'Tofoten Stadium' },
+    { src: 'assets/tofoten2.png', title: 'Tofoten Stadium' },
+    { src: 'assets/greninja.png', title: 'Shiny Greninja' },
+    { src: 'assets/pokecenter.png', title: 'Pokémon Center'},
+    { src: 'assets/spookyland.png', title: 'Spooky Purple Tree Land'}
+
+    // add more here
+];
+
+let galleryIndex = 0;
+
+const gMain    = document.getElementById('g-main');
+const gCount   = document.getElementById('g-count');
+const gCaption = document.getElementById('g-caption');
+const gStrip   = document.getElementById('g-strip');
+const gPlayBtn = document.getElementById('g-play');
+
+// Build the thumbnail strip from the array
+galleryImages.forEach(function(img, i) {
+    const thumb = document.createElement('img');
+    thumb.src = img.src;
+    thumb.alt = img.title;
+    thumb.onclick = function() { showImage(i); };
+    gStrip.appendChild(thumb);
+});
+
+function showImage(i) {
+    // wrap around at both ends
+    galleryIndex = (i + galleryImages.length) % galleryImages.length;
+    const current = galleryImages[galleryIndex];
+
+    gMain.src = current.src;
+    gCaption.textContent = current.title;
+    gCount.textContent =
+        String(galleryIndex + 1).padStart(2, '0') + '/' +
+        String(galleryImages.length).padStart(2, '0');
+
+    // restart the flicker animation on every change
+    gMain.classList.remove('flicker');
+    void gMain.offsetWidth;
+    gMain.classList.add('flicker');
+
+    // highlight the active thumbnail and scroll it into view
+    const thumbs = gStrip.children;
+    for (let t = 0; t < thumbs.length; t++) {
+        thumbs[t].classList.toggle('active', t === galleryIndex);
+    }
+    thumbs[galleryIndex].scrollIntoView({ block: 'nearest', inline: 'center' });
+}
+
+document.getElementById('g-prev').onclick = function() { showImage(galleryIndex - 1); };
+document.getElementById('g-next').onclick = function() { showImage(galleryIndex + 1); };
+
+
+
+// Lightbox: click the main screen to go fullscreen, click anywhere to close
+const lightbox = document.getElementById('lightbox');
+document.getElementById('g-screen').onclick = function() {
+    document.getElementById('lightbox-img').src = galleryImages[galleryIndex].src;
+    document.getElementById('lightbox-caption').textContent = galleryImages[galleryIndex].title;
+    lightbox.classList.add('active');
+};
+lightbox.onclick = function() { lightbox.classList.remove('active'); };
+
+// Keyboard controls (arrows only work while the Builds tab is open)
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') lightbox.classList.remove('active');
+    if (!document.getElementById('builds').classList.contains('active')) return;
+    if (e.key === 'ArrowLeft') showImage(galleryIndex - 1);
+    if (e.key === 'ArrowRight') showImage(galleryIndex + 1);
+});
+
+showImage(0);
 
         window.addEventListener('load', fetchServerStatus);
     </script>
